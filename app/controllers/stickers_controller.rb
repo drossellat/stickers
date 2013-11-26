@@ -1,14 +1,16 @@
 class StickersController < ApplicationController
   def index
-  	if params[:size]== "big"
-  		@stickers = Sticker.is_big
-  	elsif params[:size] == "small"
-  		@stickers = Sticker.is_small
-  	else
-  		@stickers = Sticker.all
-  	end
+  	@stickers = Sticker.all
   	render json: @stickers
   	#render text: params.inspect
+  end
+  def big
+    @stickers = Sticker.is_big
+    render json: @stickers
+  end
+  def small
+    @stickers = Sticker.is_small
+    render json: @stickers
   end
   def show
   	@sticker = Sticker.find(params[:id])

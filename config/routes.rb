@@ -8,8 +8,15 @@ Stickers::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root "welcome#index"
 
-  resources :stickers 
+  #resources :stickers
 
+  #get '/stickers/*size' => 'stickers/filter_size' 
+     resources :stickers do
+       collection do
+         get 'big'
+         get 'small'
+       end
+      end
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
