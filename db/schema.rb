@@ -11,18 +11,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125045340) do
+ActiveRecord::Schema.define(version: 20131128130905) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
   enable_extension "uuid-ossp"
+
+  create_table "shortened_urls", force: true do |t|
+    t.integer  "owner_id"
+    t.string   "owner_type", limit: 20
+    t.string   "url",                               null: false
+    t.string   "unique_key", limit: 10,             null: false
+    t.integer  "use_count",             default: 0, null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "shortened_urls", ["owner_id", "owner_type"], name: "index_shortened_urls_on_owner_id_and_owner_type", using: :btree
+  add_index "shortened_urls", ["unique_key"], name: "index_shortened_urls_on_unique_key", unique: true, using: :btree
+  add_index "shortened_urls", ["url"], name: "index_shortened_urls_on_url", using: :btree
 
   create_table "stickers", id: :uuid, default: "uuid_generate_v4()", force: true do |t|
     t.string   "title"
     t.text     "description"
     t.string   "URL"
     t.string   "size"
-    t.boolean  "free"
+    t.string   "shortURL"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

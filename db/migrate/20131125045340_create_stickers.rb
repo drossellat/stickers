@@ -9,7 +9,7 @@ class CreateStickers < ActiveRecord::Migration
       t.text :description
       t.string :URL
       t.string :size
-      t.boolean :free
+      t.string :shortURL
 
       t.timestamps
     end

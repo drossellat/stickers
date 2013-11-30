@@ -1,6 +1,5 @@
 source 'https://rubygems.org'
-
-gem 'base32-crockford'
+gem "shotgun", "~> 0.9"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.1'
