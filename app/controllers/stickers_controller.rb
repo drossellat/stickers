@@ -20,7 +20,7 @@ class StickersController < ApplicationController
     if@sticker
       render json: @sticker
     else
-      render :json => Hash[:error , "record not found"], status: 404
+      render :json => Hash[:error , :"record not found"], status: 404
     end
   end
 
