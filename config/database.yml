@@ -4,3 +4,9 @@ development:
   database: stickers_development
   pool: 5
   password:
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: stickers_production
+  pool: 5
+  password:
